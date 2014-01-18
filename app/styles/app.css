@@ -1,0 +1,570 @@
+@font-face {
+    /* //fonts.googleapis.com/css?family=Megrim*/
+    font-family: 'Megrim';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Megrim'), url(//themes.googleusercontent.com/licensed/font?kit=btCmVBkPJ9UvhAbJXTCZgsOajgouqq2MR4lYZ_UVrlY) format('woff2'), url(//themes.googleusercontent.com/licensed/font?kit=qEJpfagdsHCtrYCoZI4n9MOajgouqq2MR4lYZ_UVrlY) format('woff');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 300;
+    src: local('Lato Light Italic'), local('Lato-LightItalic'), url(//themes.googleusercontent.com/static/fonts/lato/v6/2HG_tEPiQ4Z6795cGfdivD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+/*  Scroll Webkit
+------------------------*/
+::-webkit-scrollbar {
+    width: 0.2em;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #bdc3c7;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #7f8c8d;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    /* background-image: url(../images/grey_wash_wall.png);*/
+    padding-top: 0; /* IE10 Consumer Preview */
+    background-image: -ms-linear-gradient(bottom, #333333 0%, #666666 100%);
+
+    /* Mozilla Firefox */
+    background-image: -moz-linear-gradient(bottom, #333333 0%, #666666 100%);
+
+    /* Opera */
+    background-image: -o-linear-gradient(bottom, #333333 0%, #666666 100%);
+
+    /* Webkit (Safari/Chrome 10) */
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #333333), color-stop(1, #666666));
+
+    /* Webkit (Chrome 11+) */
+    background-image: -webkit-linear-gradient(bottom, #333333 0%, #666666 100%);
+
+    /* W3C Markup, IE10 Release Preview */
+    background-image: linear-gradient(to top, #333333 0%, #666666 100%);
+}
+
+.row {
+    max-width: 100em;
+}
+
+h1 {
+    font-family: "Megrim", sans-serif;
+}
+
+/* Top bar */
+.top-bar .name h1 a {
+    font-size: 200%;
+    color: #E2E2E2;
+}
+
+#shared-doc-list li:not(.active) a {
+    -webkit-transition: background-color 600ms ease-out;
+    -moz-transition: background-color 600ms ease-out;
+    transition: background-color 600ms ease-out;
+    background: #333333;
+
+}
+
+#shared-doc-list li.new a {
+    -webkit-transition: background-color 600ms ease-out;
+    -moz-transition: background-color 600ms ease-out;
+    transition: background-color 600ms ease-out;
+    color: #333333;
+    background: white;
+
+}
+
+#room-leave span {
+    margin-left: 1em;
+}
+
+@media only screen and (min-width: 40.063em) {
+    #shared-doc-list li a {
+        max-width: 10em;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    #room-leave span {
+        display: none;
+    }
+
+}
+
+/*video */
+@media only screen and  (min-width: 40.063em) and (max-width: 64.063em) {
+    #others {
+        position: absolute;
+        right: 0;
+        z-index: 1;
+    }
+}
+
+@media only screen and (max-width: 40em) {
+    #others {
+        position: relative;
+    }
+
+}
+
+#me, #others .panel {
+    overflow: hidden;
+    /*min-height: 7em;*/
+    padding: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.219608);
+}
+
+#me h5, #others .panel h5 {
+    color: white;
+    background-color: #333;
+    padding: 0.125rem;
+}
+
+#me .stream-container, #others .panel .stream-container {
+    position: relative;
+}
+
+#me .stream-container.video, #others .panel .stream-container.video {
+}
+
+.stream-container + .stream-container {
+    margin-top: 0.625rem;
+}
+
+#me   .stream-label,
+#others     .stream-label {
+    width: 100%;
+    background-color: rgba(3, 0, 0, 0.35);
+    top: 0;
+    text-align: center;
+    color: white;
+    margin: 0;
+}
+
+#me  .video .stream-label,
+#others .video  .stream-label {
+    position: absolute;
+    z-index: 1;
+}
+
+#me video, #others video {
+    max-width: 98%;
+}
+
+#me  .button-container, #others .button-container {
+    text-align: center;
+}
+
+#me  .audio .button, #others .audio .button {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0;
+}
+
+#me  .video .button, #others .video .button {
+    width: 30%;
+    margin: 0 0.5%;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+#me  .video .button span, #others .video .button span {
+    display: none;
+}
+
+#me  .video .button i, #others .video .button i {
+}
+
+#me .speaking .audio-status, #others .speaking .audio-status {
+    color: red;
+}
+
+#me .audio .button i {
+    float: right;
+    margin-right: 0.5rem;
+    font-size: 16px;
+}
+
+#me .button i.fi-microphone {
+    margin-right: 0.70rem;
+}
+
+#others .button:first-child {
+    /* margin-top: 26%;*/
+}
+
+#others  .button {
+    /*    margin-left: 82%;*/
+
+}
+
+#others .audio  .button i {
+    float: left;
+    margin-left: 0.5rem;
+    font-size: 16px;
+}
+
+.button.inactive {
+    background-color: white;
+    color: #008cba;
+    border: 1px solid #008cba;
+}
+
+#chat-container {
+    position: static;
+}
+
+#chat-container textarea {
+    height: 5em;
+
+    border-color: #E2E2E2;
+    background-color: rgba(255, 255, 255, 0.25)
+}
+
+#chat-container textarea:focus, #chat-container textarea:hover {
+    background-color: rgba(255, 255, 255, 1)
+}
+
+#chat-container .messages p {
+    color: white;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.22);
+    margin: 0;
+    padding: 2rem 0.1rem;
+    display: block;
+    position: relative;
+    font-size: 12px;
+}
+
+#chat-container .messages span.author {
+    display: block;
+    position: absolute;
+    font-size: 10px;
+    top: 0.25em;
+    left: 0.25em;
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+    border-radius: 3px;
+    padding: 0 0.25em;
+}
+
+#chat-container .messages .timeago {
+    display: block;
+    position: absolute;
+    font-size: 10px;
+    background-color: white;
+    color: rgb(100, 100, 100);
+    padding: 0 0.1rem;
+    border-radius: 3px;
+    top: 0.25em;
+    right: 0.25em;
+    -webkit-transition: background-color 300ms ease-out;
+    -moz-transition: background-color 300ms ease-out;
+    transition: background-color 300ms ease-out;
+}
+
+#chat-container .messages p:nth-child(even) {
+
+    background: rgb(100, 100, 100);
+    background: rgba(100, 100, 100, 0.22);
+
+}
+
+#fileadd-container .columns > div {
+
+    color: #E2E2E2;
+    border: 1px solid #4d4d4d;
+    border-radius: 3px;
+
+    background-color: #333;
+    border: 1px solid #007ba1;
+    background-color: #008cba;
+    cursor: pointer;
+    padding: 1em 0;
+    margin-bottom: 1em;
+    -webkit-transition: background-color 300ms ease-out;
+    -moz-transition: background-color 300ms ease-out;
+    transition: background-color 300ms ease-out;
+    height:4em;
+}
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+    #fileadd-container .columns   {
+        padding:0.15em;
+    }
+}
+
+#fileadd-container .columns > div:hover {
+
+    color: white;
+    background-color: #222222;
+    background-color: #006887;
+}
+
+#fileadd-container    i {
+    display: inline-block;
+    white-space: nowrap;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-size: 200%;
+
+}
+
+#fileadd-container   span  {
+    display:none;
+}
+
+#uploader .fallback {
+    display: none;
+}
+
+#uploader .progress {
+    margin-top: 0.625rem;
+    height: 0.5rem;
+}
+
+#uploader .progress span {
+    display: block;
+}
+
+#main-content {
+    padding-left: 0;
+}
+
+#main-content .mainView {
+    width: 100%;
+    padding: 0;
+    border: none;
+    position: relative;
+
+}
+
+#main-content  .mainView video {
+    width: 100%;
+
+}
+
+/*pdf/odf viewer */
+.titlebar {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    height: 2em;
+    width: 100%;
+    overflow: hidden;
+
+    box-shadow: 0px 1px 3px rgba(50, 50, 50, 0.75);
+    background: #000;
+    opacity: 0.25;
+    transition: opacity .2s ease-out;
+    -moz-transition: opacity .2s ease-out;
+    -webkit-transition: opacity .2s ease-out;
+    -o-transition: opacity .2s ease-out;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.titlebar h2 {
+    font-size: 1rem;
+    display: inline-block;
+    color: white;
+}
+
+.titlebar a {
+    color: white;
+    margin: 0 0.5em;
+    display: inline-block;
+}
+
+.titlebar:hover {
+    opacity: 0.8;
+    transition: opacity .2s ease-out;
+    -moz-transition: opacity .2s ease-out;
+    -webkit-transition: opacity .2s ease-out;
+    -o-transition: opacity .2s ease-out;
+}
+
+.canvasContainer {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.22);
+}
+
+.overlayNavigator {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    top: 50%;
+    margin-top: -50px;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 3;
+    /*opacity: 0;*/
+    -webkit-transition: opacity 1s ease-out;
+    -moz-transition: opacity 1s ease-out;
+    transition: opacity 1s ease-out;
+}
+
+.overlayNavigator .previousPage {
+    float: left;
+    margin-left: 10px;
+    width: 70px;
+    /* CSS triangle */
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-right: 50px solid black;
+
+    opacity: 0.25;
+    transition: opacity .2s ease-out;
+    -moz-transition: opacity .2s ease-out;
+    -webkit-transition: opacity .2s ease-out;
+    -o-transition: opacity .2s ease-out;
+}
+
+.overlayNavigator .nextPage {
+    float: right;
+    margin-right: 10px;
+
+    /* CSS triangle */
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid black;
+
+    opacity: 0.25;
+    transition: opacity .2s ease-out;
+    -moz-transition: opacity .2s ease-out;
+    -webkit-transition: opacity .2s ease-out;
+    -o-transition: opacity .2s ease-out;
+}
+
+.previousPage:active, .nextPage:active {
+    opacity: 0.8;
+}
+
+.previousPage:hover, .nextPage:hover {
+    opacity: 0.5;
+    transition: opacity .2s ease-out;
+    -moz-transition: opacity .2s ease-out;
+    -webkit-transition: opacity .2s ease-out;
+    -o-transition: opacity .2s ease-out;
+}
+
+/*cmis browser*/
+.cmis-browser {
+    list-style-type: none;
+}
+
+.cmis-browser li {
+    width: 30%;
+    float: left;
+    overflow-x: hidden;
+    margin-right: 1%;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.cmis-browser li:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.cmis-browser i {
+    font-family: "foundation-icons";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-decoration: inherit;
+    font-size: 250%;
+    width: 1.1em;
+}
+
+.cmis-browser i:before {
+    content: "\f18e";
+
+}
+
+[data-cmis-type="cmis:folder"] i:before {
+    content: "\f150";
+
+}
+
+[ data-cmis-mime-type="application/pdf"] i:before {
+    content: "\f18b";
+
+}
+
+#cmis-chooser-reveal .browser {
+    max-height: 20rem;
+    overflow-y: scroll;
+
+}
+
+/*landing*/
+#landing {
+    max-width: 62.5rem;
+}
+
+#landing .panel h4 {
+    background-color: #333333;
+    padding: 0.83333rem 1.11111rem;
+    text-align: center;
+    color: #eeeeee;
+    font-weight: normal;
+    font-size: 0.88889rem;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+}
+
+#landing .big {
+    font-size: 1.5rem;
+    color: #999;
+}
+
+#landing .success .big {
+    color: #ddd
+}
+
+#landing ul {
+    list-style: none;
+}
+
+#landing .panel {
+
+    /* display: table-cell;*/
+}
+
+#landing .fi-check {
+    color: #43ac6a
+}
+
+#form-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 1em 0;
+}
+
+#landing .panel {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#landing .details i {
+
+    font-size: 250%;
+    margin: 0.1em 0.15em;
+    color: #2ba6cb;
+}
