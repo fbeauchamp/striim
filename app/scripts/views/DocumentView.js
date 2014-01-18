@@ -25,9 +25,7 @@ define(
                 return {};
             },
             adjust: function () {
-                console.log('adjust');
                 this.$el.height(Math.max(500,$(window).height() - this.$el.offset().top - 10));
-                 // this.$el.width($(window).width() - this.$el.offset().left - 10);
                 return this;
             },
             render: function () {

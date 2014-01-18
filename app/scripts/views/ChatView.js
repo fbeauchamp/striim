@@ -11,7 +11,6 @@ define(
     ],
 
     function ($, Backbone,_, Mustache,timeago,template,templateMessage) {
-        console.log(template);
         'use strict';
         /*
         $.timeago.settings.strings = {

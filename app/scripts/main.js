@@ -29,6 +29,9 @@ require.config({
         },
         pdfjs: {
             exports: 'PDFJS'
+        },
+        webodf: {
+            exports: 'odf'
         }
     },
     //should be integrated in grunt https://github.com/yeoman/grunt-bower-requirejs
@@ -44,6 +47,7 @@ require.config({
         hark: '../bower_components/hark/hark.bundle',
         webrtcadapter: 'vendor/adapter',
         pdfjs: '../bower_components/pdf.js/build/pdf',
+        webodf: '../bower_components/WebODF/build/webodf',
         cmis: '../bower_components/cmis/lib/cmis',
         'superagent': '../bower_components/superagent/superagent'
     }

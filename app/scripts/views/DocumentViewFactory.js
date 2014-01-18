@@ -3,11 +3,11 @@ define(
     [
         'views/DocumentView',
         'views/Notepad',
-        'views/OdfPdf'/*,
+        'views/PDF'/*,
         'views/Url'*/
     ],
 
-    function (Document, Notepad, OdfPdf/*, Url*/) {
+    function (Document, Notepad, PFD/*, Url*/) {
         'use strict';
 
         return {
@@ -43,7 +43,7 @@ define(
                     /*case '.ods':
                     case '.odt':
                     case '.odp':*/
-                        return new OdfPdf(opts);
+                        return new PFD(opts);
 
                 }
 
@@ -52,7 +52,7 @@ define(
                         return new Notepad(opts);
 
                     case 'application/pdf':
-                        return new OdfPdf(opts);
+                        return new PFD(opts);
                     case 'text/html':
                         return new Url(opts);
                     default :
