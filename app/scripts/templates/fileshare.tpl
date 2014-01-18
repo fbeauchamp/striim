@@ -5,7 +5,7 @@
                <i class=" fi-upload"></i><span> Upload</span>
 
                 <div class="fallback">
-                    <input name="file" type="file" accept="application/pdf" multiple/>
+                    <input name="file" type="file"  multiple/>
                 </div>
             </form>
 

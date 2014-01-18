@@ -36,18 +36,19 @@ define(
                     console.log('dropbox undefined');
                     return;
                 }
+
                 var self = this;
                 Dropbox.choose({
 
                     // Required. Called when a user selects an item in the Chooser.
                     success: function (files) {
-                        files[0].ext = '.pdf';
-                        files[0].mime = 'application/pdf';
-                        files[0].originalFilename = files[0].name;
-                        var matches = files[0].link.match(/([^\/]+)\/[^\/]+$/);
-                        files[0].id = matches[1];
+                        var file = files[0],
+                            point = file.name.lastIndexOf('.');
 
-                        self.trigger('doc', files[0]);
+                        file.id =  file.link.match(/\/([a-z0-9]{15,32})\//)[1];
+                        file.ext =  point >=0 ? file.name.substr(point) : '';
+
+                        self.trigger('doc', file);
                     },
 
                     // Optional. Called when the user closes the dialog without selecting a file
@@ -63,8 +64,8 @@ define(
 
                     // Optional. A value of false (default) limits selection to a single file, while
                     // true enables multiple file selection.
-                    multiselect: false,
-                    extensions: ['.pdf']
+                    multiselect: false/*,
+                    extensions: ['.pdf']*/
                 });
             },
             clickUploader: function (e) {
@@ -85,18 +86,10 @@ define(
                             return;
                         }
                         var formData = new FormData();
-                        //formData.append('room', 'le nom de ma salle');
-                        var nb = 0;
+                        //formData.append('room', 'le nom de ma salle'); 
                         for (var i = 0, file; file = files[i]; ++i) {
-                            if (file.type != 'application/pdf') {
-                                alert(' seul le format pdf est pris en charge pour l\'instant');
-                                continue
-                            }
-                            nb++;
                             formData.append('file', file);
                         }
-                        if (nb == 0)
-                            return;
                         var xhr = new XMLHttpRequest();
                         xhr.open('POST', '/upload', true);
                         var $progress = $('<div class="progress radius  small"></div>').append('<span class="meter"></span>');

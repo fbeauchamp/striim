@@ -160,6 +160,11 @@ define(
                 this.navigate('#home', {trigger: true});
             },
             showDoc: function (id) {
+
+                //spat are left encodeded
+                id = decodeURIComponent(id);
+
+
                 if (!this.room) {
                     this.navigate('#login', {trigger: true});
                 }

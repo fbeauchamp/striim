@@ -2,13 +2,16 @@
 define(
     [
         'jquery',
-        'backbone'
+        'backbone',
+        'mustache',
+        'text!templates/download.en.tpl'
     ],
 
-    function ($, Backbone) {
+    function ($, Backbone,Mustache,template) {
         'use strict';
 
         return  Backbone.View.extend({
+            className: 'mainView row file',
 
             initialize: function (opts) {
                 opts = opts || {};
@@ -29,6 +32,8 @@ define(
                 return this;
             },
             render: function () {
+                console.log(this.model.toJSON());
+                this.$el.html(Mustache.render(template,this.model.toJSON()));
                 return this;
             }
         });

@@ -162,6 +162,7 @@ define(
                 });
             },
             render: function () {
+                console.log(this.model.toJSON());
                 var self = this;
                 this.$el.html(Mustache.render(template, this.model.toJSON()));
                 PDFJS.getDocument(this.model.get('link')).then(function (pdf) {

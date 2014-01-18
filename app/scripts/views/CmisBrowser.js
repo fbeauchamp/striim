@@ -33,22 +33,20 @@ define(
             _showDocument: function (e) {
 
                 var el = e.target;
-                while(el.nodeName  != 'LI'){
-                    el  = el.parentNode;
+                while (el.nodeName != 'LI') {
+                    el = el.parentNode;
                 }
 
-                if(el.getAttribute('data-cmis-mime-type') != 'application/pdf'){
-                    alert('seul le pdf est supporté pour la démo');
-                }else{
-                    this.trigger('choosen', {
-                        ext: '.pdf',
-                        mime:'application-pdf',
-                        originalFilename: el.innerTex|| el.textContent,
-                        name:  el.innerTex|| el.textContent,
-                        id: el.getAttribute('data-cmis-object-id'),
-                        link:this.session.getContentStreamURL(el.getAttribute('data-cmis-object-id'))
-                    });
-                }
+                var name = el.innerText || el.textContent,
+                    point = name.lastIndexOf('.'),
+                    ext =  point >=0 ? name.substr(point) : '';
+
+                this.trigger('choosen', {
+                    ext:ext,
+                    name: name,
+                    id: el.getAttribute('data-cmis-object-id'),
+                    link: this.session.getContentStreamURL(el.getAttribute('data-cmis-object-id'))
+                });
             },
             _up: function () {
                 this.path.unshift(); //current folder

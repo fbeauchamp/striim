@@ -60,9 +60,8 @@ require([
     'foundation',
     'socket.io',
     'collections/Peers',
-    'views/DocumentViewFactory',
     'routes/router'
-], function (_, Backbone, $, Foundation, io, Peers, DocumentViewFactory, MainRouter) {
+], function (_, Backbone, $, Foundation, io, Peers,  MainRouter) {
 
     var peers = new Peers();
     var socket = io.connect();

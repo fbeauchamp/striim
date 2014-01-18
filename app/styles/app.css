@@ -339,7 +339,7 @@ h1 {
 #uploader .progress span {
     display: block;
 }
-
+/* main container */
 #main-content {
     padding-left: 0;
 }
@@ -354,6 +354,16 @@ h1 {
 
 #main-content  .mainView video {
     width: 100%;
+
+}
+#main-content .file{
+    margin:3em auto;
+    text-align:center;
+
+}
+
+#main-content .file .panel{
+    display:    inline-block;
 
 }
 

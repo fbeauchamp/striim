@@ -82,8 +82,10 @@ define(
             },
             showShare: function (id) {
 
-                if (!this.shares.get(id))
+                if (!this.shares.get(id)){
+                    console.log(' doc unknown')
                     return;
+                }
 
                 this.menu.activate(id);
                 if (this._currentShareView) {
