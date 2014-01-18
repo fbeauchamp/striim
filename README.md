@@ -1,4 +1,4 @@
-# striim 
+# striim
 Stri.im is a web app aiming to ease videoconferencing  and  live document sharing.
 
 ## use a demo

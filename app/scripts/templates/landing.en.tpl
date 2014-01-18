@@ -10,6 +10,9 @@
         </ul>
     </nav>
 </div>
+<a href="https://github.com/fbeauchamp/striim"><img style="position: absolute; top: 0; right: 0; border: 0;"
+                                      src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+                                      alt="Fork me on GitHub"></a>
 <div class="row" id="landing">
     <!--<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>-->
 
@@ -79,7 +82,8 @@
             <div class="panel radius ">
                 <h4>Why a new tool ? </h4>
                 <ul>
-                    <li><i class="fi-check"></i> I wasn't satisfied by the solutions availables, they were too expensive or too complex (or both).
+                    <li><i class="fi-check"></i> I wasn't satisfied by the solutions availables, they were too expensive
+                        or too complex (or both).
                     </li>
                     <li><i class="fi-check"></i> I'm curious</li>
                     <li><i class="fi-check"></i> I wanted to test theses edge technologies.</li>
@@ -91,9 +95,11 @@
                 <h4>Who did it ? </h4>
 
                 <p>
-                    By <a target="_blank" href="http://cv.stri.im" title="my resume, in french">Florent BEAUCHAMP</a>, a french engineer, 33yo,
+                    By <a target="_blank" href="http://cv.stri.im" title="my resume, in french">Florent BEAUCHAMP</a>, a
+                    french engineer, 33yo,
                     father of two, living near <a target="_blank"
-                                                    href="https://maps.google.com/maps?q=macon,frannce&hl=fr&ie=UTF8&ll=47.115,0.439453&spn=18.984882,17.402344&sll=32.831241,-83.686321&sspn=0.183043,0.135956&t=h&hnear=M%C3%A2con,+Sa%C3%B4ne-et-Loire,+Bourgogne,+France&z=6">Mâcon (France)</a>
+                                                  href="https://maps.google.com/maps?q=macon,frannce&hl=fr&ie=UTF8&ll=47.115,0.439453&spn=18.984882,17.402344&sll=32.831241,-83.686321&sspn=0.183043,0.135956&t=h&hnear=M%C3%A2con,+Sa%C3%B4ne-et-Loire,+Bourgogne,+France&z=6">Mâcon
+                        (France)</a>
                 </p>
 
                 <p>Special thanks to Jean Philippe BOURGEON, whom lend me this domain, initially bought to win <a
