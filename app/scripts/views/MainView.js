@@ -36,7 +36,6 @@ define(
                 this.$el.html(Mustache.render(mainTemplate, {room: this.room}));
                 this.menu = new MenuView({collection: this.shares, el: 'header.masthead', room: this.room});
                 this.menu.render();
-                $(document).foundation();
 
                 //add uploader
                 this.uploader = new UploaderView().render();
@@ -56,6 +55,7 @@ define(
                     var m = this.shares.at(0);
                     this.showShare(m.id);
                 }
+                $(document).foundation();
                 return  this;
             },
             showVideo: function (peerId, videoId) {
