@@ -57,6 +57,7 @@ define(
                                 videolabel: (!videos.length && !audios.length) ? '' : videolabel,
                                 audiolabel: audiolabel,
                                 videoId: id,
+                                peerId: this.model.id,
                                 remote : this.model.get('remote')
                             }
                         )
@@ -94,7 +95,7 @@ define(
                     $container.find('.video-status').hide();
                 }
 
-                $container.find('.expand-status').click(function () {
+                $container.find('.expand-status').click(function (e) {
                     $container.find('.expand-status').toggle();
                 });
 
