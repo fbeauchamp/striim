@@ -14,7 +14,6 @@
                                       src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
                                       alt="Fork me on GitHub"></a>
 <div class="row" id="landing">
-    <!--<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>-->
 
     <div id="form-container">
         <form id="landingForm" class="large-offset-3 large-6  medium-offset-2 medium-8 small-12 ">
@@ -75,7 +74,7 @@
                     <li><i class="fi-laptop"></i> From your desktop, laptop, tablet or smartphone.
                     </li>
                 </ul>
-                <!--<button class="button small ">En savoir plus</button>-->
+                <a href="https://github.com/fbeauchamp/striim" target="_blank" class="button small ">More</a>
             </div>
         </div>
         <div class=" medium-4 columns">
