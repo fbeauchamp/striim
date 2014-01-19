@@ -299,6 +299,11 @@ h1 {
     transition: background-color 300ms ease-out;
     height:4em;
 }
+@media only screen and (min-width: 64.03em) and (max-width: 90em) {
+    #fileadd-container .columns   {
+        padding:0.25em;
+    }
+}
 @media only screen and (min-width: 40.063em) and (max-width: 64em) {
     #fileadd-container .columns   {
         padding:0.15em;
