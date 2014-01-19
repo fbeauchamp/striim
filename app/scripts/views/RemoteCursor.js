@@ -48,7 +48,7 @@ define(
             },
             move: function (offsetX, offsetY) {
                 var self = this,
-                    canvas = this.$el.parents('.canvasContainer').find('canvas'),
+                    canvas = this.$el.parents('.canvasContainer').find('.canvas'),
                     offset = canvas.offset(),
                     width = canvas.width(),
                     height = canvas.height();

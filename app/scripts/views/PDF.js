@@ -6,88 +6,27 @@ define(
         'pdfjs',
         'mustache',
         'views/DocumentView',
-        'views/RemoteCursor',
         'text!templates/pdf.tpl'
     ],
 
-    function ($, Backbone, PDFJS, Mustache, DocumentView,RemoteCursor , template) {
+    function ($, Backbone, PDFJS, Mustache, DocumentView, template) {
         'use strict';
         PDFJS.workerSrc = 'bower_components/pdf.js/build/pdf.worker.js';
 
 
         return  DocumentView.extend({
             initialize: function (opts) {
+                DocumentView.prototype.initialize.call(this,opts);
                 var self = this;
                 this.peers = opts.peers;
-                this._cursors = [];
-                Backbone.on('share:setState', function (state) {
-                    if (state.id === self.model.get('id')) {
-                        if (state.page && state.page !== self.pageNum) {
-                            self.pageNum = state.page;
-                            self._renderPage();
-                        }
-
-                        if (state.cursor) {
-                            var cursor = self.getCursor(state.from);
-                            cursor.move(state.cursor.x, state.cursor.y);
-                            if (state.type == 'click') {
-                                cursor.click();
-                            }
-                        }
-                    }
-
-                });
             },
             className: 'mainView',
             events: {
                 'click .nextPage': 'next',
                 'click .previousPage': 'prev',
-                'click .fullscreen': 'fullscreen',
-                'click canvas': 'clickCanvas',
-                'mousemove canvas': 'move'
-            },
-            clickCanvas: function (e) {
-                var canvas = this.$('canvas'),
-                    offset = canvas.offset(),
-                    width = canvas.width(),
-                    height = canvas.height();
-
-                Backbone.trigger('share:stateSet',
-                    {
-                        id: this.model.id,
-                        type: 'click',
-                        cursor: {
-                            x: (e.pageX - offset.left) / width,
-                            y: (e.pageY - offset.top) / height
-                        }
-                    }
-                )
-            },
-            move: function (e) {
-                var canvas = this.$('canvas'),
-                    offset = canvas.offset(),
-                    width = canvas.width(),
-                    height = canvas.height();
-                Backbone.trigger('share:stateSet',
-                    {
-                        id: this.model.id,
-                        type: 'move',
-                        cursor: {
-                            x: (e.pageX - offset.left) / width,
-                            y: (e.pageY - offset.top) / height
-                        }
-                    }
-                )
-            },
-            getCursor: function (from) {
-                if (!this._cursors[from]) {
-                    this._cursors[from] = new RemoteCursor({model: this.peers.get(from)});
-                    this._cursors[from].$el.appendTo(this.$('.canvasContainer'));
-                    if (this.pdf) {
-                        this._cursors[from].render();
-                    }
-                }
-                return this._cursors[from];
+                'click .fullscreen': 'fullscreen'/*, no remote cursor on odf for the moment
+                'click .canvas': 'onDocumentClick',
+                'mousemove .canvas': 'onMouseMove'*/
             },
             next: function (e) {
                 e.preventDefault();
@@ -107,7 +46,7 @@ define(
 
             },
             _renderPage: function () {
-                var canvas = this.$('canvas')[0], self = this;
+                var canvas = this.$('.canvas')[0], self = this;
                 if (!this.pdf)
                     return;
                 this.pdf.getPage(this.pageNum).then(function (page) {

@@ -3,7 +3,7 @@
 
 ![demo ](https://github.com/fbeauchamp/striim/raw/master/docs/demo.gif "Demo")
 Stri.im is a web app aiming to ease videoconferencing  and  live document sharing :
-* Show a pdf from your computer, your dropbox or your ECM
+* Show a pdf or an openoffice file from your computer, your dropbox or your ECM
 * Make live audio, video or text comments
 * Install nothing, signin nowhere.
 * From your desktop, laptop, tablet or smartphone.

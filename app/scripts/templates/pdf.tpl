@@ -9,7 +9,7 @@
 
  </div>
 <div class="canvasContainer">
-    <canvas></canvas>
+    <canvas class="canvas"></canvas>
 </div>
 <div class="overlayNavigator">
     <a href="#" class="previousPage"></a>

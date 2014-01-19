@@ -4,16 +4,35 @@ define(
         'jquery',
         'backbone',
         'mustache',
+        'views/RemoteCursor',
         'text!templates/download.en.tpl'
     ],
 
-    function ($, Backbone,Mustache,template) {
+    function ($, Backbone,Mustache,RemoteCursor ,template) {
         'use strict';
 
         return  Backbone.View.extend({
             className: 'mainView row file',
 
             initialize: function (opts) {
+                this._cursors = [];
+                Backbone.on('share:setState', function (state) {
+                    if (state.id === self.model.get('id')) {
+                        if (state.page && state.page !== self.pageNum) {
+                            self.pageNum = state.page;
+                            self._renderPage();
+                        }
+
+                        if (state.cursor) {
+                            var cursor = self.getCursor(state.from);
+                            cursor.move(state.cursor.x, state.cursor.y);
+                            if (state.type == 'click') {
+                                cursor.click();
+                            }
+                        }
+                    }
+
+                });
                 opts = opts || {};
                 var self = this;
                 this.document = opts.document;
@@ -42,7 +61,49 @@ define(
                     this.el.webkitRequestFullscreen();
                 }
             },
+            onDocumentClick: function (e) {
+                var target  = $(e.target),
+                    offset = target.offset(),
+                    width = target.width(),
+                    height = target.height();
 
+                Backbone.trigger('share:stateSet',
+                    {
+                        id: this.model.id,
+                        type: 'click',
+                        cursor: {
+                            x: (e.pageX - offset.left) / width,
+                            y: (e.pageY - offset.top) / height
+                        }
+                    }
+                )
+            },
+            onMouseMove: function (e) {
+                var target  = $(e.target),
+                    offset = target.offset(),
+                    width = target.width(),
+                    height = target.height();
+                Backbone.trigger('share:stateSet',
+                    {
+                        id: this.model.id,
+                        type: 'move',
+                        cursor: {
+                            x: (e.pageX - offset.left) / width,
+                            y: (e.pageY - offset.top) / height
+                        }
+                    }
+                )
+            },
+            getCursor: function (from) {
+                if (!this._cursors[from]) {
+                    this._cursors[from] = new RemoteCursor({model: this.peers.get(from)});
+                    this._cursors[from].$el.appendTo(this.$('.canvasContainer'));
+                    if (this.pdf) {
+                        this._cursors[from].render();
+                    }
+                }
+                return this._cursors[from];
+            },
             render: function () {
                 console.log(this.model.toJSON());
                 this.$el.html(Mustache.render(template,this.model.toJSON()));

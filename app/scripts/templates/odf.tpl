@@ -8,7 +8,7 @@
 
 </div>
 <div class="canvasContainer">
-    <div id="odf"></div>
+    <div class="canvas"></div>
 </div>
 <div class="overlayNavigator">
     <a href="#" class="previousPage"></a>

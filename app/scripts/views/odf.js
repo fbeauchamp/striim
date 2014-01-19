@@ -16,6 +16,8 @@ define(
 
         return  DocumentView.extend({
             initialize: function (opts) {
+                DocumentView.prototype.initialize.call(this,opts);
+                console.log('----initialize odf')
                 var self = this;
                 this.peers = opts.peers;
                 this._cursors = [];
@@ -43,7 +45,9 @@ define(
             events: {
                 'click .nextPage': 'next',
                 'click .previousPage': 'prev',
-                'click .fullscreen': 'fullscreen'
+                'click .fullscreen': 'fullscreen',
+                'click .canvas': 'onDocumentClick',
+                'mousemove .canvas': 'onMouseMove'
             },
             getCursor: function (from) {
                 if (!this._cursors[from]) {
@@ -83,7 +87,7 @@ define(
                 var self = this;
 
                 this.$el.html(Mustache.render(template, this.model.toJSON()));
-                this.odf = new odf.OdfCanvas(this.$('#odf')[0]);
+                this.odf = new odf.OdfCanvas(this.$('.canvas')[0]);
                 this.pageNum = 1;
                 this.adjust();
                 this.odf.load(this.model.get('link'));
