@@ -6,11 +6,11 @@ define(
         'pdfjs',
         'mustache',
         'views/DocumentView',
-        'views/SharedCursor',
+        'views/RemoteCursor',
         'text!templates/pdf.tpl'
     ],
 
-    function ($, Backbone, PDFJS, Mustache, DocumentView,SharedCursor , template) {
+    function ($, Backbone, PDFJS, Mustache, DocumentView,RemoteCursor , template) {
         'use strict';
         PDFJS.workerSrc = 'bower_components/pdf.js/build/pdf.worker.js';
 
@@ -81,7 +81,7 @@ define(
             },
             getCursor: function (from) {
                 if (!this._cursors[from]) {
-                    this._cursors[from] = new SharedCursor({model: this.peers.get(from)});
+                    this._cursors[from] = new RemoteCursor({model: this.peers.get(from)});
                     this._cursors[from].$el.appendTo(this.$('.canvasContainer'));
                     if (this.pdf) {
                         this._cursors[from].render();

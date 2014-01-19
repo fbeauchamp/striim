@@ -86,7 +86,7 @@ define(
                             return;
                         }
                         var formData = new FormData();
-                        //formData.append('room', 'le nom de ma salle'); 
+                        //formData.append('room', 'le nom de ma salle');
                         for (var i = 0, file; file = files[i]; ++i) {
                             formData.append('file', file);
                         }
@@ -96,9 +96,13 @@ define(
                         $progress.find('.meter').width(0);
                         $progress.appendTo($('#uploader'));
                         xhr.onload = function (e) {
+                            console.log(e);
                             var doc = JSON.parse(e.target.responseText) ;
-
-                            self.trigger('doc', doc);
+                            if(doc.error){
+                                alert(doc.error);
+                            }else{
+                                self.trigger('doc', doc);
+                            }
                             $progress.remove();
                         };
                         xhr.upload.onprogress = function (e) {
