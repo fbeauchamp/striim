@@ -24,7 +24,7 @@ Direct file upload is disabled on the demo server. Please use your dropbox or th
 WebRTC is used to make audio and video conferencing. It's currently supported by Firefox, Chrome and Opera on destkop,
 and by Firefox and Chrome on Android. You're out of luck on IOS/WP8.
 
-Screen sharing is only available from chrome desktop and after activating the [enable-usermedia-screen-capture flag](chrome://flags/#enable-usermedia-screen-capture) .
+Screen sharing is only available from chrome desktop and after activating this flag : chrome://flags/#enable-usermedia-screen-capture .
 Be carefull, it's still a beta option, it can lead to various crash, depending of your hardware/drivers.
 
 All others functionnalities should be ok on any recent browser and any size of screen (300px wide and more). Fill a bug
