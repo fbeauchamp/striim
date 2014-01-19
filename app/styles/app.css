@@ -354,7 +354,8 @@ h1 {
     padding: 0;
     border: none;
     position: relative;
-
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #main-content  .mainView video {

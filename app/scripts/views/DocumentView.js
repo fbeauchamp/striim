@@ -31,6 +31,18 @@ define(
                 this.$el.height(Math.max(500,$(window).height() - this.$el.offset().top - 10));
                 return this;
             },
+            fullscreen: function () {
+                if (this.el.requestFullscreen) {
+                    this.el.requestFullscreen();
+                } else if (this.el.msRequestFullscreen) {
+                    this.el.msRequestFullscreen();
+                } else if (this.el.mozRequestFullScreen) {
+                    this.el.mozRequestFullScreen();
+                } else if (this.el.webkitRequestFullscreen) {
+                    this.el.webkitRequestFullscreen();
+                }
+            },
+
             render: function () {
                 console.log(this.model.toJSON());
                 this.$el.html(Mustache.render(template,this.model.toJSON()));

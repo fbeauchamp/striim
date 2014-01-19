@@ -3,11 +3,11 @@ define(
     [
         'views/DocumentView',
         'views/Notepad',
-        'views/PDF'/*,
-     'views/Url'*/
+        'views/PDF',
+        'views/odf'
     ],
 
-    function (Document, Notepad, PFD/*, Url*/) {
+    function (Document, Notepad, PFD,Odf) {
         'use strict';
 
         return {
@@ -33,6 +33,10 @@ define(
                 switch (model.get('ext')) {
                     case '.pdf':
                         return new PFD(opts);
+                    case '.ods':
+                    case '.odt':
+                    case '.odp':
+                        return new Odf(opts);
 
                     default :
                         return new Document(opts);

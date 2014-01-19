@@ -106,18 +106,6 @@ define(
                 Backbone.trigger('share:stateSet', {id: this.model.get('id'), page: this.pageNum});
 
             },
-            fullscreen: function () {
-                if (this.el.requestFullscreen) {
-                    this.el.requestFullscreen();
-                } else if (this.el.msRequestFullscreen) {
-                    this.el.msRequestFullscreen();
-                } else if (this.el.mozRequestFullScreen) {
-                    this.el.mozRequestFullScreen();
-                } else if (this.el.webkitRequestFullscreen) {
-                    this.el.webkitRequestFullscreen();
-                }
-            },
-
             _renderPage: function () {
                 var canvas = this.$('canvas')[0], self = this;
                 if (!this.pdf)
@@ -128,7 +116,7 @@ define(
                     self.adjust();
                     var scale = Math.min(
                         self.$el.width() / viewport.width,
-                        (self.$el.height()) / viewport.height
+                        self.$el.height() / viewport.height
                     );
 
                     viewport = page.getViewport(scale);
