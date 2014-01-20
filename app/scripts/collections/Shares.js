@@ -27,7 +27,7 @@ define([
                     //doc is viewable, add it to the shared  docs
                     self.add(doc);
                 } else {
-                    console.log(jsonDoc)
+
                 }
             });
             Backbone.on('share:remove', function (docId) {

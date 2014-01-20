@@ -6,12 +6,13 @@ define(
         'backbone',
         'underscore',
         'collections/Shares',
+        'collections/ChatMessages',
         'helpers/WebRTC',
         'views/MainView',
         'views/LandingView'
     ],
 
-    function ($, Backbone, _, Shares, WebRTC, MainView, LandingView) {
+    function ($, Backbone, _, Shares,Messages, WebRTC, MainView, LandingView) {
 
         return  Backbone.Router.extend({
 
@@ -129,6 +130,7 @@ define(
                     var $el = $('<div></div>').appendTo('body');
                     self.mainView = new MainView({
                         shares: new Shares(),
+                        messages: new Messages(),
                         peers: self.peers,
                         el: $el,
                         room: self.room

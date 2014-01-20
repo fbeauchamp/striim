@@ -7,7 +7,7 @@ define(
         'mustache',
         'views/DocumentView',
         'views/RemoteCursor',
-        'text!templates/odf.tpl'
+        'text!templates/pdf.tpl'
     ],
 
     function ($, Backbone, odf, Mustache, DocumentView, RemoteCursor, template) {
@@ -21,33 +21,14 @@ define(
                 var self = this;
                 this.peers = opts.peers;
                 this._cursors = [];
-                Backbone.on('share:setState', function (state) {
-                    if (state.id === self.model.get('id')) {
-                        console.log('event')
-                        if (state.page && state.page !== self.pageNum) {
-                            console.log('change page ')
-                            self.pageNum = state.page;
-                            self._renderPage();
-                        }
-
-                        if (state.cursor) {
-                            var cursor = self.getCursor(state.from);
-                            cursor.move(state.cursor.x, state.cursor.y);
-                            if (state.type == 'click') {
-                                cursor.click();
-                            }
-                        }
-                    }
-
-                });
             },
             className: 'mainView',
             events: {
                 'click .nextPage': 'next',
                 'click .previousPage': 'prev',
-                'click .fullscreen': 'fullscreen',
-                'click .canvas': 'onDocumentClick',
-                'mousemove .canvas': 'onMouseMove'
+                'click .fullscreen': 'fullscreen'/*,
+               /* 'click .canvas': 'onDocumentClick', no curosr for odf
+                'mousemove .canvas': 'onMouseMove'*/
             },
             getCursor: function (from) {
                 if (!this._cursors[from]) {

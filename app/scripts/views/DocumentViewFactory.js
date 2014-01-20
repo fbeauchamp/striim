@@ -4,10 +4,11 @@ define(
         'views/DocumentView',
         'views/Notepad',
         'views/PDF',
-        'views/odf'
+        'views/odf',
+        'views/prezi'
     ],
 
-    function (Document, Notepad, PFD,Odf) {
+    function (Document, Notepad, PFD,Odf,Prezi) {
         'use strict';
 
         return {
@@ -25,6 +26,9 @@ define(
                         return new Notepad(opts);
                     case 'application/pdf':
                         return new PFD(opts);
+                    case 'application/prezi':
+                        return new Prezi(opts);
+                        break;
                     case 'text/html': /*co browsing */
                         return new Url(opts);
                 }

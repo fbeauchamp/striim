@@ -22,7 +22,7 @@ define(
             initialize: function (opts) {
                 opts = opts || {};
                 this.shares = opts.shares;
-                this.messages = new Messages();
+                this.messages = opts.messages;
                 this.peers = opts.peers;
                 this.room = opts.room;
                 this._shareViewCache = [];

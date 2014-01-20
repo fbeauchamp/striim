@@ -19,14 +19,27 @@ define(
                 DocumentView.prototype.initialize.call(this,opts);
                 var self = this;
                 this.peers = opts.peers;
+
+                Backbone.on('share:setState', function (state) {
+                    if (state.id === self.model.get('id')) {
+                        console.log('event')
+                        if (state.page && state.page !== self.pageNum) {
+                            console.log('change page ')
+                            self.pageNum = state.page;
+                            self._renderPage();
+                        }
+
+                    }
+
+                });
             },
             className: 'mainView',
             events: {
                 'click .nextPage': 'next',
                 'click .previousPage': 'prev',
-                'click .fullscreen': 'fullscreen'/*, no remote cursor on odf for the moment
+                'click .fullscreen': 'fullscreen',
                 'click .canvas': 'onDocumentClick',
-                'mousemove .canvas': 'onMouseMove'*/
+                'mousemove .canvas': 'onMouseMove'
             },
             next: function (e) {
                 e.preventDefault();

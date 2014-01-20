@@ -42,7 +42,7 @@ define(
                     }
                 })
             },
-            render: function () { 
+            render: function () {
                 this.$el.html(Mustache.render(template,localStorage));
                 $(document).foundation();
                 this._refreshRoomName(false);

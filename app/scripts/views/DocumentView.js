@@ -18,11 +18,6 @@ define(
                 this._cursors = [];
                 Backbone.on('share:setState', function (state) {
                     if (state.id === self.model.get('id')) {
-                        if (state.page && state.page !== self.pageNum) {
-                            self.pageNum = state.page;
-                            self._renderPage();
-                        }
-
                         if (state.cursor) {
                             var cursor = self.getCursor(state.from);
                             cursor.move(state.cursor.x, state.cursor.y);

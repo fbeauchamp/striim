@@ -52,7 +52,6 @@ define(
 
                     json.at = new Date(json.at).toISOString();
                     if (this._peer) {
-                        console.log('got a peer');
                         json.fromName = this._peer.get('name');
                     }
                     content = content.replace(/&/g, '&amp;')
@@ -63,7 +62,6 @@ define(
 
                     content = content.replace(regex, '<a href="$1" target="_blank">$1</a>');
                     json.content = content;
-                    console.log(templateMessage);
                     this.$el.html(Mustache.render(templateMessage, json));
 
                     if (this._peer) {
@@ -89,7 +87,7 @@ define(
                 this._subviews = {};
 
                 var self = this;
-
+console.log(this.collection.toJSON());
                 this.collection.each(function (model) {
                     self._subviews[model.id] = new ChatMessage({model: model, peers: self._peers});
                 });

@@ -32,6 +32,9 @@ require.config({
         },
         webodf: {
             exports: 'odf'
+        },
+        prezi: {
+            exports: 'PreziPlayer'
         }
     },
     //should be integrated in grunt https://github.com/yeoman/grunt-bower-requirejs
@@ -46,6 +49,7 @@ require.config({
         mustache: '../bower_components/mustache/mustache',
         hark: '../bower_components/hark/hark.bundle',
         webrtcadapter: 'vendor/adapter',
+        prezi: 'vendor/prezi_player',
         pdfjs: '../bower_components/pdf.js/build/pdf',
         webodf: '../bower_components/WebODF/build/webodf',
         cmis: '../bower_components/cmis/lib/cmis',
