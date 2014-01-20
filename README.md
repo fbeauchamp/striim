@@ -7,6 +7,8 @@ Stri.im is a web app aiming to ease videoconferencing  and  live document sharin
 * Make live audio, video or text comments
 * Install nothing, signin nowhere.
 * From your desktop, laptop, tablet or smartphone.
+* **BETA** odf live viewer
+* **BETA** prezi live viewer : copy the url of a prezi in the chat box to share it
 
 When showing a PDF, all the users of your room see your pointer.
 
