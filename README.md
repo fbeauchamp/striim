@@ -3,12 +3,12 @@
 
 ![demo ](https://github.com/fbeauchamp/striim/raw/master/docs/demo.gif "Demo")
 Stri.im is a web app aiming to ease videoconferencing  and  live document sharing :
-* Show a pdf or an openoffice file from your computer, your dropbox or your ECM
+* Show a pdf or an openoffice file from your computer, your dropbox or your ECM.
 * Make live audio, video or text comments
 * Install nothing, signin nowhere.
 * From your desktop, laptop, tablet or smartphone.
-* **BETA** open office documents live viewer (also works with office document in oasis format)
-* **BETA** prezi live viewer : copy the url of a prezi in the chat box to share it
+* **BETA** open office documents live viewer (also works with office document in oasis format). 
+* **BETA** prezi live viewer : copy the url of a [prezi]((http://prezi.com) in the chat box to share it
 
 When showing a PDF, all the users of your room see your pointer.
 
