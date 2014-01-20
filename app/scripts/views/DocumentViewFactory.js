@@ -13,7 +13,7 @@ define(
 
         return {
             isViewable: function (model) {
-                return model && model.get('mime') != 'text/message';
+                return model && model.get('mime') != 'application/message';
             },
             makeView: function (opts) {
                 var model = opts.model;

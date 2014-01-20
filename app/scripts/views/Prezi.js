@@ -10,7 +10,7 @@ define(
     function ($, Backbone, PreziPlayer, DocumentView) {
         'use strict';
         return  DocumentView.extend({
-            className: 'mainView', 
+            className: 'mainView',
             render: function () {
                 var self = this;
                 this.$el.attr('id', this.model.id)
