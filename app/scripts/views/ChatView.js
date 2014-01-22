@@ -87,7 +87,6 @@ define(
                 this._subviews = {};
 
                 var self = this;
-console.log(this.collection.toJSON());
                 this.collection.each(function (model) {
                     self._subviews[model.id] = new ChatMessage({model: model, peers: self._peers});
                 });
@@ -128,7 +127,7 @@ console.log(this.collection.toJSON());
                 //todo : bad : a view that modify data directly
                 this.collection.add({
                     id: new Date() + Math.random(),
-                    mime: 'text/message',
+                    mime: 'application/message',
                     content: this.$('textarea').val(),
                     at: +new Date()
                 });
@@ -136,7 +135,6 @@ console.log(this.collection.toJSON());
 
             },
             render: function () {
-                console.log(template);
                 this.$el.html(Mustache.render(template));
                 this._messageContainer = this.$('.messages');
                 for (var i  in this._subviews) {

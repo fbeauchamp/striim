@@ -164,7 +164,7 @@ require([
     });
 
     socket.on('share:add', function (sharedDoc) {
-        //created by another peer
+        //created by another peer 
         Backbone.trigger('share:add', sharedDoc, {silent: true})
     });
 
