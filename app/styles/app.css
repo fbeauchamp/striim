@@ -161,6 +161,12 @@ h1 {
 #me video, #others video {
     max-width: 98%;
 }
+#me video{
+
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    transform:  scaleX(-1);
+}
 
 #me  .button-container, #others .button-container {
     text-align: center;
