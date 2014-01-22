@@ -13,8 +13,9 @@ define(
             className:'mainView',
             render: function () {
                 this.adjust();
-
-                this.$el.attr('src', '//'+document.domain+'/ep/p/'+this.model.get('padID')+'?showChat=false');
+                var local = this.peers.getLocal();
+                console.log(local.toJSON());
+                this.$el.attr('src', '//'+document.domain+'/ep/p/'+this.model.get('padID')+'?showChat=false'+"&userName="+local.get('name')+'&userColor='+local.get('color'));
 
                 return this;
             }

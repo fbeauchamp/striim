@@ -30,6 +30,7 @@ define(
                 });
                 opts = opts || {};
                 var self = this;
+                this.peers = opts.peers;
                 this.document = opts.document;
                 $(window).resize(function () {
                     self.adjust();
