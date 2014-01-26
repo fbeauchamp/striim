@@ -14,7 +14,7 @@ define(
             render: function () {
                 this.adjust();
                 var local = this.peers.getLocal();
-                this.$el.attr('src', '//'+document.domain+'/draw/p/'+this.model.get('padID')+'?showChat=false'+"&userName="+local.get('name')+'&userColor='+local.get('color'));
+                this.$el.attr('src', '//'+document.domain+'/draw/d/'+this.model.get('padID')+'?showChat=false'+"&userName="+local.get('name')+'&userColor='+local.get('color'));
 
                 return this;
             }
