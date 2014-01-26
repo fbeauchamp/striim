@@ -3,12 +3,14 @@ define(
     [
         'views/DocumentView',
         'views/Notepad',
+        'views/Whiteboard',
         'views/PDF',
         'views/odf',
-        'views/prezi'
+        'views/prezi',
+        'views/Url'
     ],
 
-    function (Document, Notepad, PFD,Odf,Prezi) {
+    function (Document, Notepad,Whiteboard, PFD,Odf,Prezi,Url) {
         'use strict';
 
         return {
@@ -24,6 +26,8 @@ define(
                 switch (model.get('mime')) {
                     case 'application/notepad':
                         return new Notepad(opts);
+                    case 'application/whiteboard':
+                        return new Whiteboard(opts);
                     case 'application/pdf':
                         return new PFD(opts);
                     case 'application/prezi':
