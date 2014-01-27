@@ -16,10 +16,11 @@
 <div class="row" id="landing">
 
     <div id="form-container">
+
+        <h2 style="text-align:center">You are almost ready to exchange </h2>
         <form id="landingForm" class="large-offset-3 large-6  medium-offset-2 medium-8 small-12 ">
 
 
-            <h2 style="text-align:center">You are almost ready to exchange </h2>
 
             <div class="row collapse">
 
@@ -37,7 +38,7 @@
             </div>
             <div class="row collapse">
 
-                <label><span class="big">2</span> - which room do you want to join ? </label>
+                <label><span class="big">2</span> - Which room do you want to use ? </label>
 
                 <div class="medium-1 column show-for-medium-up">
                     <a class="button prefix" title="generate a random room name from wikipedia " data-tooltip
