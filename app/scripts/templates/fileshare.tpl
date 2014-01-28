@@ -11,13 +11,13 @@
 
         </div>
     </div>
-    <div class="small-4 columns"   title="take a pdf from your dropbox">
+    <div class="small-4 columns"   title="share a pdf from your dropbox">
         <div id="dropbox-chooser" >
                 <i class=" fi-social-dropbox"></i><span> Dropbox</span>
 
         </div>
     </div>
-    <div class="small-4 columns"  title="take a pdf from Alfresco">
+    <div class="small-4 columns"  title="share a pdf from Alfresco">
         <div id="cmis-chooser" >
                 <i >A</i><span> Alfresco</span>
 
