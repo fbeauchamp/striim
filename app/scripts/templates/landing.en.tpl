@@ -32,7 +32,7 @@
                 </div>
                 <div class="small-1 column">
                     <a class="button postfix    " data-tooltip
-                       title="Choose a username to help other participant identify you">?</a>
+                       title="Choose a username to help other participants identify you">?</a>
                 </div>
 
             </div>
