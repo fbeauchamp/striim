@@ -1,10 +1,10 @@
 <header class="masthead">
 
 </header>
-<div class="row collapse">
-    <div class=" medium-2  large-2 columns " id="chat-container">
+<div class="row">
+    <div class=" medium-3  large-2 columns " id="chat-container">
     </div>
-    <div class=" medium-10  large-9 columns" id="main-content">
+    <div class=" medium-9  large-9 columns" id="main-content">
 
     </div>
 

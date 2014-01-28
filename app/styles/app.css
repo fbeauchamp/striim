@@ -86,7 +86,9 @@ h1 {
     background: white;
 
 }
-
+.masthead{
+    margin-bottom:  0.9375rem
+}
 #room-leave span {
     margin-left: 1em;
 }
@@ -309,15 +311,14 @@ h1 {
     transition: background-color 300ms ease-out;
     height: 4em;
 }
-
-@media only screen and (min-width: 64.03em) and (max-width: 90em) {
-    #fileadd-container .columns {
+@media only screen and (min-width: 64.03em)  {
+    #fileadd-container.row.collapse > .columns {
         padding: 0.25em;
     }
 }
 
-@media only screen and (min-width: 40.063em) and (max-width: 64em) {
-    #fileadd-container .columns {
+@media only screen and   (max-width: 64em) {
+    #fileadd-container.row.collapse > .columns {
         padding: 0.15em;
     }
 }
@@ -367,7 +368,7 @@ h1 {
     padding: 0;
     border: none;
     position: relative;
-    
+
     overflow: hidden;
 }
 

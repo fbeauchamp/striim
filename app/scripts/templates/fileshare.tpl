@@ -1,4 +1,4 @@
-<div class="row" id="fileadd-container">
+<div class="row collapse" id="fileadd-container">
     <div class="small-4 columns"   title="upload a pdf">
         <div>
             <form action="/file-upload" id="uploader">
