@@ -69,7 +69,9 @@ h1 {
     font-size: 200%;
     color: #E2E2E2;
 }
-
+#shared-doc-list{
+    margin-right: 0.9375rem;
+}
 #shared-doc-list li:not(.active) a {
     -webkit-transition: background-color 600ms ease-out;
     -moz-transition: background-color 600ms ease-out;
@@ -368,7 +370,7 @@ h1 {
 
 /* main container */
 #main-content {
-    padding-left: 0;
+    padding: 0;
 }
 
 #main-content .mainView {
