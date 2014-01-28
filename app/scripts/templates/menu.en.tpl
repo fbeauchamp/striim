@@ -33,6 +33,7 @@
 </div>
 
 <div id="room-information" data-dropdown-content class="f-dropdown content medium">
+    <p>How to get started ?</p>
     <h4>Direct link method</h4>
     <p>Copy and share this link to others. They'll join the room as soon as they click it.</p>
     <input type="text" disabled value="{{{url}}}#/join/{{room}}/">
@@ -40,7 +41,7 @@
     <h4>Alternative method</h4>
     <p>You can   ask  them to go at this adress : </p>
     <input type="text" disabled value="{{{url}}}">
-    <p>And then give use room name : </p>
+    <p>And then  use this room name : </p>
     <input type="text" disabled value="{{room}}">
 </div>
 <div id="really-quit" data-dropdown-content class="f-dropdown content">
