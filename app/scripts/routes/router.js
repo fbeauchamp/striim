@@ -149,7 +149,6 @@ define(
                             peer.call();
                         });
 
-                        $('#room-name').click();
                     });
                 }
             },

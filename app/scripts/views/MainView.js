@@ -50,12 +50,13 @@ define(
                 this.chat.render();
 
                 //and finally the peers views ( local and remote )
-                this.peersView = new PeersView({collection: this.peers}).render();
+                this.peersView = new PeersView({collection: this.peers, room: this.room}).render();
                 if (this.shares.length) {
                     var m = this.shares.at(0);
                     this.showShare(m.id);
                 }
                 $(document).foundation();
+
                 return  this;
             },
             showVideo: function (peerId, videoId) {

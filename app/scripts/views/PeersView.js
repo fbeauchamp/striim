@@ -15,8 +15,9 @@ define(
         'use strict';
         return  Backbone.View.extend({
             className: 'panel radius',
-            initialize: function () {
+            initialize: function (opts) {
                 var self = this;
+                this.room = opts.room;
                 this._subviews = [];
 
                 this.collection.each(function (model) {
@@ -46,6 +47,7 @@ define(
                 if (peer.get('remote')) {
                     peerView = new RemotePeerView({model: peer});
                     $('#others').append(peerView.$el);
+                    $('#others .welcome').hide();
                 } else {
                     peerView = new LocalPeerView({model: peer});
                     $('#chat-container').prepend(peerView.$el);
@@ -56,6 +58,16 @@ define(
                 for (var index in this._subviews) {
                     this._subviews[index].render();
                 }
+
+
+                var path =  window.location.pathname,
+                    url = window.location.protocol + '//' + window.location.host;
+
+                if(path.indexOf('#') != -1){
+                    path = path.substring(0,path.indexOf('#'))
+                }
+                url +=path +'#/join/'+this.room+'/';
+                $('#others input').val(url);
                 return this;
             },
             remove: function () {
