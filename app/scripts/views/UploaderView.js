@@ -12,7 +12,6 @@ define(
     function ($, Backbone, Mustache, fileShareTemplate, CmisBrowser) {
         'use strict';
 
-
         return Backbone.View.extend({
             events: {
                 'click #uploader': 'clickUploader',
@@ -29,16 +28,16 @@ define(
                 this.cmisbrowser.once('choosen', function (doc) {
                     self.trigger('doc', doc);
                     $('#cmis-chooser-reveal').foundation('reveal', 'close');
-                })
+                });
             },
             clickDropbox: function () {
-                if (typeof Dropbox == 'undefined') {
+                if (!!window.Dropbox) {
                     console.log('dropbox undefined');
                     return;
                 }
 
                 var self = this;
-                Dropbox.choose({
+                window.Dropbox.choose({
 
                     // Required. Called when a user selects an item in the Chooser.
                     success: function (files) {
@@ -60,7 +59,7 @@ define(
                     // Optional. "preview" (default) is a preview link to the document for sharing,
                     // "direct" is an expiring link to download the contents of the file. For more
                     // information about link types, see Link types below.
-                    linkType: "direct", // or "direct"
+                    linkType: 'direct', // or "direct"
 
                     // Optional. A value of false (default) limits selection to a single file, while
                     // true enables multiple file selection.
@@ -87,7 +86,7 @@ define(
                         }
                         var formData = new FormData();
                         //formData.append('room', 'le nom de ma salle');
-                        for (var i = 0, file; file = files[i]; ++i) {
+                        for (var i = 0, file = files[i]; i < files.length; ++i) {
                             formData.append('file', file);
                         }
                         var xhr = new XMLHttpRequest();
@@ -99,7 +98,7 @@ define(
                             console.log(e);
                             var doc = JSON.parse(e.target.responseText) ;
                             if(doc.error){
-                                alert(doc.error);
+                                console.log(doc.error);
                             }else{
                                 self.trigger('doc', doc);
                             }
@@ -117,5 +116,5 @@ define(
                 this.cmisbrowser=  new CmisBrowser({el: this.$('#cmis-chooser-reveal .browser')}).render();
                 return this;
             }
-        })
+        });
     });

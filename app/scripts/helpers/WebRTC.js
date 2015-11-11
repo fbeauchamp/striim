@@ -2,13 +2,18 @@
 define([
     'underscore',
     'webrtcadapter'
-], function (_) {
+], function (_, adpater) {
     'use strict';
+    console.log('ADAPTER',adpater);
+    var RTCPeerConnection = adpater.RTCPeerConnection;
+    var RTCSessionDescription = adpater.RTCSessionDescription;
+    var RTCIceCandidate = adpater.RTCIceCandidate;
+    var getUserMedia = adpater.getUserMedia;
 
     var pcConfig = {iceServers: [
         {url: 'stun:23.21.150.121'},
         {url: 'stun:stun.l.google.com:19302'},
-        {url: "turn:numb.viagenie.ca:3478", username: "florent.beauchamp%40gmail.com", "credential": "striimisgood4u"}
+        {url: 'turn:numb.viagenie.ca:3478', username: 'florent.beauchamp%40gmail.com', 'credential': 'striimisgood4u'}
     ]};
     var pcConstraints = {optional: [
         {DtlsSrtpKeyAgreement: true}
@@ -79,8 +84,7 @@ define([
                     pc.createAnswer(
                         function (sdp) {
                             pc.setLocalDescription(sdp,
-                                function () {
-                                },
+                                function () {},
                                 error
                             );
                             remote.message('rtc', sdp);
@@ -110,8 +114,7 @@ define([
             pc.createOffer(
                 function (sdp) {
                     pc.setLocalDescription(sdp,
-                        function () {
-                        },
+                        function () {},
                         error
                     );
                     remote.message('rtc', sdp);
@@ -182,10 +185,12 @@ define([
     var getLocalWebcam = function (opts, success, err) {
         var mediaConstraints = {audio: true, video: true};
 
-        if (opts.audio === false)
+        if (opts.audio === false){
             mediaConstraints.audio = false;
-        if (opts.video === false)
+        }
+        if (opts.video === false){
             mediaConstraints.video = false;
+        }
 
         if (mediaConstraints.video && opts.hd) {
             mediaConstraints.video.mandatory = {

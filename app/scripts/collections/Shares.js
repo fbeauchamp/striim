@@ -41,13 +41,13 @@ define([
             Backbone.on('share:setContent', function (jsonDoc) {
                 var d = self.get(jsonDoc.id);
                 if (d) {
-                    d.set('content', jsonDoc.content)
+                    d.set('content', jsonDoc.content);
                 }
             });
             Backbone.on('share:updateContent', function (patch) {
                 var d = self.get(patch.id);
                 if (d) {
-                    d.trigger('updateContent', patch)
+                    d.trigger('updateContent', patch);
                 }
             });
 

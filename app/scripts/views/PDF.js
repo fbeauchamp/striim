@@ -3,13 +3,14 @@ define(
     [
         'jquery',
         'backbone',
+        'underscore',
         'pdfjs',
         'mustache',
         'views/DocumentView',
         'text!templates/pdf.tpl'
     ],
 
-    function ($, Backbone, PDFJS, Mustache, DocumentView, template) {
+    function ($, Backbone, _, PDFJS, Mustache, DocumentView, template) {
         'use strict';
         PDFJS.workerSrc = 'bower_components/pdf.js/build/pdf.worker.js';
 
@@ -22,9 +23,9 @@ define(
 
                 Backbone.on('share:setState', function (state) {
                     if (state.id === self.model.get('id')) {
-                        console.log('event')
+                        console.log('event');
                         if (state.page && state.page !== self.pageNum) {
-                            console.log('change page ')
+                            console.log('change page ');
                             self.pageNum = state.page;
                             self._renderPage();
                         }
@@ -43,16 +44,18 @@ define(
             },
             next: function (e) {
                 e.preventDefault();
-                if (this.pageNum >= this.pdf.pdfInfo.numPages)
+                if (this.pageNum >= this.pdf.pdfInfo.numPages){
                     return;
+                }
                 this.pageNum++;
                 this._renderPage();
                 Backbone.trigger('share:stateSet', {id: this.model.get('id'), page: this.pageNum});
             },
             prev: function (e) {
                 e.preventDefault();
-                if (this.pageNum <= 1)
+                if (this.pageNum <= 1){
                     return;
+                }
                 this.pageNum--;
                 this._renderPage();
                 Backbone.trigger('share:stateSet', {id: this.model.get('id'), page: this.pageNum});
@@ -60,8 +63,9 @@ define(
             },
             _renderPage: function () {
                 var canvas = this.$('.canvas')[0], self = this;
-                if (!this.pdf)
+                if (!this.pdf){
                     return;
+                }
                 this.pdf.getPage(this.pageNum).then(function (page) {
                     //get native scale
                     var viewport = page.getViewport(1);
@@ -88,13 +92,13 @@ define(
                         viewport: viewport
                     };
                     page.render(renderContext);
-                    if (self.pageNum == self.pdf.pdfInfo.numPages) {
+                    if (self.pageNum === self.pdf.pdfInfo.numPages) {
                         self.$('.nextPage').attr('disabled', 'disabled');
                     } else {
                         self.$('.nextPage').attr('disabled', null);
                     }
 
-                    if (self.pageNum == 1) {
+                    if (self.pageNum === 1) {
                         self.$('.previousPage').attr('disabled', 'disabled');
                     } else {
                         self.$('.previousPage').attr('disabled', null);

@@ -27,9 +27,9 @@ define(
                     Mustache.render(
                         '<a href="#doc/{{link}}" >{{name}}</a>',
                         {
-                            name: self.model.get('name'),
-                            link: self.model.get('id')
-                        }
+                        name: self.model.get('name'),
+                        link: self.model.get('id')
+                    }
                     )
                 );
                 setTimeout(function(){
@@ -83,8 +83,8 @@ define(
                 var path =  window.location.pathname,
                     url = window.location.protocol + '//' + window.location.host;
 
-                if(path.indexOf('#') != -1){
-                    path = path.substring(0,path.indexOf('#'))
+                if(path.indexOf('#') !== -1){
+                    path = path.substring(0,path.indexOf('#'));
                 }
                 url +=path;
 

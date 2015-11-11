@@ -33,7 +33,7 @@ define(
             _showDocument: function (e) {
 
                 var el = e.target;
-                while (el.nodeName != 'LI') {
+                while (el.nodeName !== 'LI') {
                     el = el.parentNode;
                 }
 
@@ -51,8 +51,9 @@ define(
             _up: function () {
                 this.path.unshift(); //current folder
 
-                if (this.path.length)
+                if (this.path.length){
                     this._showFolder(this.path[this.path.length - 1]);
+                }
                 this._showFolder();
             },
             _clickFolder: function (e) {
@@ -64,34 +65,37 @@ define(
                 var parentFolderId;
                 if (!folderId) {
                     folderId = this.session.defaultRepository.rootFolderId;
-                    this.path = []
+                    this.path = [];
                 } else {
                     this.path.push(folderId);
                     if (this.path.length) {
                         parentFolderId = this.path[this.path.length - 1];
                     }
                 }
-                this._getFolderContent(folderId, function (err) {
-                }, function (docs) {
-                    if (parentFolderId)
-                        docs.objects.unshift({
-                            object: {
-                                succinctProperties: {
+                this._getFolderContent(
+                    folderId,
+                    function () {/*err*/},
+                    function (docs) {
+                        if (parentFolderId){
+                            docs.objects.unshift({
+                                object: {
+                                    succinctProperties: {
 
-                                    'cmis:name': '..',
-                                    'cmis:objectId': parentFolderId,
-                                    'cmis:baseTypeId': 'up'
+                                        'cmis:name': '..',
+                                        'cmis:objectId': parentFolderId,
+                                        'cmis:baseTypeId': 'up'
+                                    }
                                 }
-                            }
-                        });
-                    self.$el.html(Mustache.render(cmisFolderTemplate, docs));
-                })
+                            });
+                        }
+                        self.$el.html(Mustache.render(cmisFolderTemplate, docs));
+                    });
             },
             render: function () {
                 var self = this;
 
                 this.session.setCredentials('admin', 'admin').loadRepositories()
-                    .ok(function (data) {
+                    .ok(function () {
                         self.session.defaultRepository.repositoryUrl =
                             '/alfresco' + self.session.defaultRepository.repositoryUrl.substring(self.session.defaultRepository.repositoryUrl.indexOf('/cmisbrowser'));
                         self.session.defaultRepository.rootFolderUrl =

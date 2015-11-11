@@ -9,6 +9,7 @@ define(
 
     function ($, Backbone, DocumentView, io) {
         'use strict';
+        var TreeMirror = window.TreeMirror;
         var changes = io.connect('/cobrowsing-viewer');
         changes.on('connect', function () {
             console.log('viewer connected');
@@ -19,15 +20,14 @@ define(
             initialize: function () {
                 console.log('init');
                 var self = this;
-                if (typeof TreeMirror == 'undefined') {
+                if (typeof TreeMirror === 'undefined') {
                     //bypass require.js, probably not a good idea
                     $.getScript('/cobrowsing/mutation-summary.js', function () {
                         $.getScript('/cobrowsing/tree-mirror.js', function () {
                             self.ready = true;
-                        })
-                    })
+                        });
+                    });
                 } else {
-
                     self.ready = true;
                 }
 
@@ -35,9 +35,14 @@ define(
                     self.clearPageAndInit(msg);
                 });
                 changes.on('mutation', function (msg) {
-                    if (self.mirror)
-                        self.mirror.applyChanged(msg.removed, msg.addedOrMoved, msg.attributes, msg.text);
-                })
+                    if (self.mirror){
+                        self.mirror.applyChanged(
+                            msg.removed,
+                            msg.addedOrMoved,
+                            msg.attributes,
+                            msg.text);
+                    }
+                });
             },
             render: function () {
                 console.log('render');
@@ -64,13 +69,14 @@ define(
                 this.mirror = new TreeMirror(doc, {
                     createElement: function (tagName) {
                         var node;
-                        if (tagName == 'SCRIPT') {
+                        if (tagName === 'SCRIPT') {
+                            //script are rendered server side,
                             node = document.createElement('NO-SCRIPT');
                             node.style.display = 'none';
                             return node;
                         }
 
-                        if (tagName == 'HEAD') {
+                        if (tagName === 'HEAD') {
                             node = document.createElement('HEAD');
                             node.appendChild(document.createElement('BASE'));
                             node.firstChild.href = self.base;
@@ -81,9 +87,10 @@ define(
                         return null;
                     },
                     setAttribute: function (node, attrName, attribute) {
-                        if (attrName.toLowerCase().substr(0, 2) == 'on'
-                            || attrName.toLowerCase() == 'http-equiv'
+                        if (attrName.toLowerCase().substr(0, 2) === 'on' ||
+                            attrName.toLowerCase() === 'http-equiv'
                             ) {
+                            // no you won't try to redirect or reload a viewer
                             //console.log(attrName + ' is forbidden ');
                         } else {
                             try {
@@ -116,12 +123,12 @@ define(
                 });
 
                 $(doc).on('img','error', function(){
-                    console.log('error loading ')
+                    console.log('error loading ');
                 });
                 $(doc).on('form' , 'submit', function(e){
                     e.preventDefault();
-                })
-                console.log('initialize done')
+                });
+                console.log('initialize done');
             }
 
         });

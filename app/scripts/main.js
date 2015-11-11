@@ -87,7 +87,8 @@ require([
             color: '#' + color}).at(0);
         console.log('connected');
 
-        var app = new MainRouter({
+        /*var app = */
+        new MainRouter({
             local: local,
             peers: peers
         });
@@ -116,7 +117,7 @@ require([
                 //it's a local delete, don't bother others wit it
                 //@todo undo it
             }
-        })
+        });
     });
 
     //collect any occured change
@@ -128,7 +129,7 @@ require([
             delete peer.id;
             bbPeer.set(peer);
         } else {
-            console.log('peer unkown or local')
+            console.log('peer unkown or local');
         }
     });
     socket.on('peer:add', function (peer) {
@@ -144,7 +145,7 @@ require([
 
     socket.on('peer:remove', function (peer) {
         //created by another peer
-        peers.remove(peer)
+        peers.remove(peer);
     });
 
     Backbone.on('share:added', function (sharedDoc) {
@@ -160,12 +161,12 @@ require([
             } else {
                 // console.log('success')
             }
-        })
+        });
     });
 
     socket.on('share:add', function (sharedDoc) {
         //created by another peer
-        Backbone.trigger('share:add', sharedDoc, {silent: true})
+        Backbone.trigger('share:add', sharedDoc, {silent: true});
     });
 
 
@@ -183,12 +184,12 @@ require([
             } else {
                 //todo can really delete the document
             }
-        })
+        });
     });
 
     socket.on('share:remove', function (sharedDocId) {
         //created by another peer
-        Backbone.trigger('share:remove', sharedDocId)
+        Backbone.trigger('share:remove', sharedDocId);
     });
 
 
@@ -200,18 +201,18 @@ require([
                 //rollback to the server controlled content
                 Backbone.trigger('share:setContent', res.originalContent);
             }
-        })
+        });
     });
 
     socket.on('share:setContent', function (sharedDoc) {
         //modified  by another peer and checked by the server
-        Backbone.trigger('share:setContent', sharedDoc)
+        Backbone.trigger('share:setContent', sharedDoc);
     });
 
     //incremental update of th content of a share
     socket.on('share:updateContent', function (sharedDoc) {
         //modified  by another peer and checked by the server
-        Backbone.trigger('share:updateContent', sharedDoc)
+        Backbone.trigger('share:updateContent', sharedDoc);
     });
 
 
@@ -226,7 +227,7 @@ require([
 
     socket.on('share:setState', function (state) {
         //modified  by another peer and checked by the server
-        Backbone.trigger('share:setState', state)
+        Backbone.trigger('share:setState', state);
     });
 
 })

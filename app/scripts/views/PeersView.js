@@ -63,8 +63,8 @@ define(
                 var path =  window.location.pathname,
                     url = window.location.protocol + '//' + window.location.host;
 
-                if(path.indexOf('#') != -1){
-                    path = path.substring(0,path.indexOf('#'))
+                if(path.indexOf('#') !== -1){
+                    path = path.substring(0,path.indexOf('#'));
                 }
                 url +=path +'#/join/'+this.room+'/';
                 $('#others input').val(url);

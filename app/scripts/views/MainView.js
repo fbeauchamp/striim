@@ -2,6 +2,7 @@
 define(
     [
         'jquery',
+        'underscore',
         'backbone',
         'mustache',
         'collections/ChatMessages',
@@ -15,9 +16,9 @@ define(
 
     ],
 
-    function ($, Backbone, Mustache, Messages, MenuView, ChatView, PeersView, UploaderView, VideoView, DocumentViewFactory, mainTemplate) {
+    function ($, _, Backbone, Mustache, Messages, MenuView, ChatView, PeersView, UploaderView, VideoView, DocumentViewFactory, mainTemplate) {
         'use strict';
-
+        console.log(Backbone);
         return  Backbone.View.extend({
             initialize: function (opts) {
                 opts = opts || {};
@@ -28,7 +29,6 @@ define(
                 this._shareViewCache = [];
                 this._videoView = null;
                 this._currentShareView = null;
-                var self = this;
             },
             render: function () {
                 var self = this;
@@ -84,7 +84,7 @@ define(
             showShare: function (id) {
 
                 if (!this.shares.get(id)){
-                    console.log(' doc unknown')
+                    console.log(' doc unknown');
                     return;
                 }
 

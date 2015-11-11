@@ -13,18 +13,18 @@ define(
     ],
 
     function ($, Backbone, _, Shares,Messages, WebRTC, MainView, LandingView) {
-
+        'use strict';
         return  Backbone.Router.extend({
 
             routes: {
-                "home": "home",
-                "join/:room/(:pseudo)": "join",
-                "leave": "leave",
-                "room": "room",  //room information
-                "doc/*id": "showDoc", //show one doc  information
-                "video/:peerId/:videoId": "showVideo",
-                "login": "login",
-                "*a": "login" //et tout le reste aussi
+                'home': 'home',
+                'join/:room/(:pseudo)': 'join',
+                'leave': 'leave',
+                'room': 'room',  //room information
+                'doc/*id': 'showDoc', //show one doc  information
+                'video/:peerId/:videoId': 'showVideo',
+                'login': 'login',
+                '*a': 'login' //et tout le reste aussi
             },
             initialize: function (opts) {
                 opts = opts || {};
@@ -36,7 +36,7 @@ define(
 
                 this.local.on('change:name', function (model, name) {
                     localStorage.pseudo = name;
-                })
+                });
 
             },
             login: function () {
@@ -87,13 +87,6 @@ define(
 
 
                 $('body h2').text('Waiting for webcam authorization');
-                WebRTC.getLocalScreen(
-                    {},
-                    getCam
-                    , function (error) {
-                        console.log('couldn t get the screen ' + error);
-                        getCam();
-                    });
                 function getCam(screen) {
                     WebRTC.getLocalWebcam(
                         {
@@ -114,11 +107,11 @@ define(
                             if (screen) {
                                 self.local.set('streams', [screen]);
                             } else {
-                                console.log(' no stream ')
+                                console.log(' no stream ');
                             }
                             emitJoin();
                         }
-                    )
+                    );
                 }
 
                 function emitJoin() {
@@ -151,6 +144,14 @@ define(
 
                     });
                 }
+
+                WebRTC.getLocalScreen(
+                    {},
+                    getCam,
+                    function (error) {
+                        console.log('couldn t get the screen ' + error);
+                        getCam();
+                    });
             },
             leave: function () {
                 this.local.get('socket').emit('leave');

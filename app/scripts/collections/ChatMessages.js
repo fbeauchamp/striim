@@ -10,7 +10,7 @@ define([
         initialize: function () {
             var self = this;
             Backbone.on('share:add', function (model) {
-                console.log('check')
+                console.log('check');
                 if (model.mime === 'application/message') {
                     self.add(model);
                 }
@@ -21,6 +21,5 @@ define([
                 }
             });
         }
-    })
-})
-;
+    });
+});

@@ -37,10 +37,11 @@ define(
                     dataType: 'jsonp',
                     success: function (data) {
                         var $inputRoomName = self.$('[name=roomname]');
-                        if (force || $inputRoomName.val() == '' )
+                        if (force || $inputRoomName.val() === '' ){
                             $inputRoomName.val('').attr('placeholder', data.query.random[0].title);
+                        }
                     }
-                })
+                });
             },
             render: function () {
                 this.$el.html(Mustache.render(template,localStorage));

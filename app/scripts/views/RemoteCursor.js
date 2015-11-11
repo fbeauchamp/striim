@@ -6,7 +6,7 @@ define(
     ],
 
     function ($, Backbone) {
-
+        'use strict';
         return  Backbone.View.extend({
 
             initialize: function () {
@@ -42,7 +42,7 @@ define(
                         top: '-=1.5em'
                     }, 400, function () {
                         $circle.fadeOut(200, function () {
-                            $circle.remove()
+                            $circle.remove();
                         });
                     });
             },
@@ -63,7 +63,7 @@ define(
                 });
 
                 this.fade = setTimeout(function () {
-                    self.$el.fadeOut()
+                    self.$el.fadeOut();
                 }, 800);
                 return this;
             },

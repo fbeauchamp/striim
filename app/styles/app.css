@@ -276,7 +276,7 @@ h1 {
     border: 1px solid black;
     color: black;
     background-color: white;
-    border-radius: 3px;
+    border-radius: 4px;
     padding: 0 0.25em;
 }
 
@@ -287,7 +287,7 @@ h1 {
     background-color: white;
     color: rgb(100, 100, 100);
     padding: 0 0.1rem;
-    border-radius: 3px;
+    border-radius: 4px;
     top: 0.25em;
     right: 0.25em;
     -webkit-transition: background-color 300ms ease-out;
@@ -306,7 +306,7 @@ h1 {
 
     color: #E2E2E2;
     border: 1px solid #4d4d4d;
-    border-radius: 3px;
+    border-radius: 4px;
 
     background-color: #333;
     border: 1px solid #007ba1;
@@ -604,7 +604,7 @@ h1 {
     background-size: cover;
     margin: 1em 0;
     padding: 1rem 0;
-    border-radius: 3px;
+    border-radius: 4px;
 }
 
 #form-container h2 {
@@ -617,7 +617,7 @@ h1 {
 #landingForm {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 1rem 1rem 0.5rem 1rem;
-    border-radius: 3px;
+    border-radius: 4px;
     border:1px solid #666666;
 }
 

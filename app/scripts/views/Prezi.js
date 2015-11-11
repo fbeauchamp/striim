@@ -13,7 +13,7 @@ define(
             className: 'mainView',
             render: function () {
                 var self = this;
-                this.$el.attr('id', this.model.id)
+                this.$el.attr('id', this.model.id);
 
                 this.adjust();
                 this.player = new PreziPlayer(this.model.id, {
@@ -28,11 +28,11 @@ define(
 
                 Backbone.on('share:setState', function (state) {
                     if (state.id === self.model.get('id')) {
-                        console.log('event prezi')
+                        console.log('event prezi');
                         if (state.page && state.page !== self.player.getCurrentStep()) {
                             console.log('change page ');
                             self.pageNum = state.page;
-                            self.player.flyToStep(state.page)
+                            self.player.flyToStep(state.page);
                         }
                     }
 

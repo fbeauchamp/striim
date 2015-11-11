@@ -53,14 +53,14 @@ define(
                 if (videos.length || (!videos.length && !audios.length)) {
                     $container = $(
                         Mustache.render(
-                            templateVideo, {
-                                videolabel: (!videos.length && !audios.length) ? '' : videolabel,
-                                audiolabel: audiolabel,
-                                videoId: id,
-                                peerId: this.model.id,
-                                remote : this.model.get('remote')
-                            }
-                        )
+                            templateVideo,
+                            {
+                            videolabel: (!videos.length && !audios.length) ? '' : videolabel,
+                            audiolabel: audiolabel,
+                            videoId: id,
+                            peerId: this.model.id,
+                            remote : this.model.get('remote')
+                        })
                     );
                     $container.find('video').attr('src', window.URL.createObjectURL(stream));
                     $container.find('.video-status.paused').hide();
@@ -95,7 +95,7 @@ define(
                     $container.find('.video-status').hide();
                 }
 
-                $container.find('.expand-status').click(function (e) {
+                $container.find('.expand-status').click(function () {
                     $container.find('.expand-status').toggle();
                 });
 

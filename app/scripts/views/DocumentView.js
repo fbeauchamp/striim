@@ -21,7 +21,7 @@ define(
                         if (state.cursor) {
                             var cursor = self.getCursor(state.from);
                             cursor.move(state.cursor.x, state.cursor.y);
-                            if (state.type == 'click') {
+                            if (state.type === 'click') {
                                 cursor.click();
                             }
                         }
@@ -72,7 +72,7 @@ define(
                             y: (e.pageY - offset.top) / height
                         }
                     }
-                )
+                );
             },
             onMouseMove: function (e) {
                 var target  = $(e.target),
@@ -88,7 +88,7 @@ define(
                             y: (e.pageY - offset.top) / height
                         }
                     }
-                )
+                );
             },
             getCursor: function (from) {
                 if (!this._cursors[from]) {

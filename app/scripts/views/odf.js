@@ -17,8 +17,7 @@ define(
         return  DocumentView.extend({
             initialize: function (opts) {
                 DocumentView.prototype.initialize.call(this,opts);
-                console.log('----initialize odf')
-                var self = this;
+                console.log('----initialize odf');
                 this.peers = opts.peers;
                 this._cursors = [];
             },
@@ -50,17 +49,19 @@ define(
             },
             prev: function (e) {
                 e.preventDefault();
-                if (this.pageNum <= 1)
+                if (this.pageNum <= 1){
                     return;
+                }
                 this.pageNum--;
                 this._renderPage();
                 Backbone.trigger('share:stateSet', {id: this.model.get('id'), page: this.pageNum});
 
             },
             _renderPage: function () {
-                console.log('_render page ')
-                if (!this.odf)
+                console.log('_render page ');
+                if (!this.odf){
                     return;
+                }
                 this.odf.showPage(this.pageNum);
 
             },
